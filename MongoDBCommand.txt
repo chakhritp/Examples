@@ -1,4 +1,5 @@
-﻿mongod --dbpath E:\MyWork\TRWorks\MongoDBData
+﻿mongod --dbpath C:\TRWorks\MongoDBData
+mongod --dbpath E:\MyWork\TRWorks\MongoDBData
 
 use RegistrationDB
 
@@ -9,3 +10,7 @@ db.Members.insert({'MemberId':2, 'Title':'Ms.', 'FirstName':'Gal', 'LastName':'G
 db.Members.insert({'MemberId':3, 'Title':'Mr.', 'FirstName':'Chakhrit', 'LastName':'Phungdabot', 'Sex':'Male', 'Age':35, 'Address':'Thailand'})
 
 db.Members.find({})
+
+db.Members.drop()
+
+db.dropDatabase()

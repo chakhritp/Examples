@@ -1,0 +1,11 @@
+﻿mongod --dbpath E:\MyWork\TRWorks\MongoDBData
+
+use RegistrationDB
+
+db.createCollection('Members')
+
+db.Members.insert({'MemberId':1, 'Title':'Mr.', 'FirstName':'Lionel', 'LastName':'Messi', 'Sex':'Male', 'Age':28, 'Address':'Argentina'})
+db.Members.insert({'MemberId':2, 'Title':'Ms.', 'FirstName':'Gal', 'LastName':'Gadot', 'Sex':'Female', 'Age':32, 'Address':'Israel'})
+db.Members.insert({'MemberId':3, 'Title':'Mr.', 'FirstName':'Chakhrit', 'LastName':'Phungdabot', 'Sex':'Male', 'Age':35, 'Address':'Thailand'})
+
+db.Members.find({})

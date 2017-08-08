@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Content/main.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-2.1.4.js"></script>
+    <script src="../Scripts/jquery-2.1.4.min.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/main.js"></script>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h1>WCF MongoDB WebApp RESTFul</h1>
+            <hr />
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-5 col-md-offset-1">
+            <input type="text" name="url" id="url" class="form-control" placeholder="Your service url (ex: http://localhost:63327/RestService.svc)" value="http://localhost:63327/RestService.svc" />
+            <em>Change the url value for your service url on (Index.html)</em>
+            <br />
+            <br />
+            <form id="user_data">
+                <div class="form-group">
+                    <input type="hidden" name="id" id="id" />
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="text" name="email" id="email" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" name="city" id="city" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="country">Country:</label>
+                    <input type="text" name="country" id="country" class="form-control" />
+                </div>
+            </form>
+            <div class="col-md-6 col-md-offset-3">
+                <input type="button" name="insert" id="insert" value="insert" class="btn btn-primary" />
+                <input type="button" name="update" id="update" value="update" class="btn btn-warning" disabled />
+                <input type="button" name="delete" id="delete" value="delete" class="btn btn-danger" disabled />
+            </div>
+        </div>
+        <div id="content_div" class="col-md-5">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>E-mail</th>
+                        <th>City</th>
+                        <th>Country</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id='removable_no_data_tr'>
+                        <td colspan='4'>no data yet.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

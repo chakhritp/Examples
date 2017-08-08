@@ -1,0 +1,134 @@
+﻿@{ViewBag.Title = "CarStock";}
+<h2 style="text-align: center;">CarStock</h2>
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script lang="ja" type="text/javascript">
+    function GetCarById() {
+        var id = 1;
+        $.ajax({
+            url: 'http://localhost:32359/api/CarDetails/' + id,
+            type: 'GET',
+            dataType: "json",
+            success: function (data) {
+
+                var datavalue = data;
+                var myJsonObject = datavalue;
+
+                var CarModel = myJsonObject[0].CarModel;
+                var CarName = myJsonObject[0].CarName;
+                var CarColor = myJsonObject[0].CarColor;
+                var CarPrice = myJsonObject[0].CarPrice;
+
+                $('<tr><td>' + CarModel + '</td><td>' + CarName +
+                '</td><td>' + CarColor + '</td>' + '</td><td>' + CarPrice + '</td></tr>').appendTo('#Cartbl');
+
+                alert('bought by id data successfully');
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+    }
+    function AllcarDetails() {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:32359/api/Cardetails",
+
+            dataType: "json",
+            success: function (data) {
+
+                var datavalue = data;
+                var myJsonObject = datavalue;
+                contentType: "application/json";
+                $.each(myJsonObject, function (i, mobj) {
+                    $("#Cartbl").append('<tr><td width="50px">' + mobj.CarName +
+                     '</td><td width="50px">' + mobj.CarModel +
+                    '</td><td width="50px">' + mobj.CarPrice +
+                    '</td>' + '</td><td width="50px">'
+                    + mobj.CarColor + '</td></tr>');
+
+                });
+
+                alert('bought all data successfully');
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+    }
+
+    function PostData() {
+        var cardetails = { CarName: "Ertiga", CarModel: "LXI", CarPrice: "5000000", CarColor: "blue" };
+
+        $.ajax({
+            type: "POST",
+            data: JSON.stringify(cardetails),
+            url: "http://localhost:32359/api/Cardetails",
+            dataType: "json",
+            contentType: "application/json",
+        });
+
+        alert('posted data successfully');
+    }
+    function PutData() {
+        var cardetails = { CarName: "Ertiga", CarModel: "LXI", CarPrice: "5000000", CarColor: "blue" };
+        var t = JSON.stringify(cardetails);
+        var id = "0";
+        $.ajax({
+            url: 'http://localhost:32359/api/Cardetails/' + id,
+            type: "put",
+            contentType: "application/json; charset=utf-8",
+            data: t,
+            dataType: "json",
+
+        });
+        alert('PUT (updated) data successfully');
+    }
+    function deleteData1() {
+        var id = 0;
+        $.ajax({
+            url: 'http://localhost:32359/api/CarDetails/' + id,
+            type: 'DELETE',
+            success: function (data) {
+
+            },
+            error: function (data) {
+                alert('Problem in deleting car:' + data.responseText);
+            }
+        });
+
+        alert('Deleted data successfully');
+    }
+</script>
+
+@using (Html.BeginForm())
+{
+    <div style="margin-left: 15%; margin-right: 15%; width: 100%">
+        <table width="70%" style="color: lavender; text-align: center; border: solid;">
+            <tr>
+                <td>
+                    <input id="btnget" type="button" onclick="AllcarDetails();" value="Get_Data" />
+                    <input id="btngetbyid" type="button" onclick="GetCarById();" value="Get_BYID" />
+                    <input id="Btnpost" type="button" onclick="PostData();" value="Post_Data" />
+                    <input id="Btnput" type="button" onclick="PutData();" value="Put_Data" />
+                    <input id="BtnDelete" type="button" onclick="deleteData1();" value="Delete" />
+                </td>
+
+            </tr>
+        </table>
+        <table width="70%" style="color: black; border: solid; text-align:center; " id="Cartbl">
+           
+      <tr>
+          <td><b>CarName</b></td>
+          <td><b>CarModel</b></td>
+          <td><b>CarPrice</b></td>
+          <td><b>CarColor</b></td>
+
+
+      </tr>
+
+        </table>
+
+    </div>
+}
+
+

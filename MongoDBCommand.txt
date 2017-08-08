@@ -11,6 +11,8 @@ db.Members.insert({'MemberId':3, 'Title':'Mr.', 'FirstName':'Chakhrit', 'LastNam
 
 db.Members.find({})
 
+db.Members.remove({'MemberId':4})
+
 db.Members.drop()
 
 db.dropDatabase()

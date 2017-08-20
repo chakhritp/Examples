@@ -1,0 +1,69 @@
+﻿-- TortoiseGit -> Settings -> Git -> Name
+git config --global user.name "chakhritp"
+
+-- TortoiseGit -> Settings -> Git -> Email
+git config --global user.email "chakhrit_p@hotmail.com"
+
+-- TortoiseGit -> Settings -> Git
+git config --list
+
+-- Git Create repository here... (master)
+git init
+
+-- Check status
+git status
+
+-- Add...
+git add index.html
+
+-- Git commit -> "master"...
+git commit -m "add sample index page"
+
+-- Log changes on the current branch
+git log
+
+git add about.html contact.html
+git commit -m "add empty about and contact page"
+
+-- Show the different from latest
+git diff HEAD
+
+-- Recovery deleted file from different status
+git checkout index.html
+or
+git reset index.html
+or
+git reset --soft HEAD~1
+
+-- Remove file from tracking
+git remove --cached index.html
+
+-- Create branch...
+git branch create_new_page
+
+-- Show all branch
+git branch
+
+-- Switch/Checkout...
+git checkout create_new_page
+
+git add '*.txt'
+git commit -m "I just added new two pages on create_new_page branch"
+
+git checkout master
+
+-- Merge...
+git merge create_new_page
+
+-- Remove created branch history
+git branch -d create_new_page
+
+git remote add origin https://github.com/chakhritp/git101.git
+
+git remote -v
+
+-- Push...
+git push -u origin master
+
+-- Fetch...
+git fetch
